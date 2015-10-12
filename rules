@@ -1,0 +1,61 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+mcell = $(CURDIR)/mcell
+DEST1 = $(CURDIR)/debian/mcell-3.3/usr/share/mcell-3.3
+
+#install: build clean $(mcell)
+install: build clean
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+
+	echo "MAKING DIRECTORY"
+	mkdir -m 755 -p $(DEST1)
+	echo "INSTALLING MCELL"
+	install -m 777 $(mcell) $(DEST1)
+
+build:
+	mkdir -p build
+	cd build && ../src/configure && make
+	mv build/mcell .
+
+clean:
+	rm -fr build
+	dh_clean
+
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+	dh_installman
+	dh_link
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary-arch: install
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install
+
+#binary-arch: build install
+
+#binary: binary-indep binary-arch
+#.PHONY: build clean binary-indep binary-arch binary install
+
+#binary-arch: install
+
+#binary: binary-arch
+
+#%:
+#        dh $@ 
