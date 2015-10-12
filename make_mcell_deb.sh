@@ -13,8 +13,10 @@ git checkout v$version
 rm -fr .git
 cd src && ./bootstrap
 cd ../..
-tar czf mcell_$version.orig.tar.gz mcell
-mv mcell mcell-$version
+#tar czf mcell_$version.orig.tar.gz mcell
+#mv mcell mcell-$version
+mv mcell/src mcell-$version
+tar czf mcell_$version.orig.tar.gz mcell-$version
 cd mcell-$version
 yes | dh_make --single -c gpl2
 sed -i 's/Section: unknown/Section: science/' debian/control
