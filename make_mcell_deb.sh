@@ -19,17 +19,18 @@ mv mcell/src mcell-$version
 tar czf mcell_$version.orig.tar.gz mcell-$version
 cd mcell-$version
 yes | dh_make --single -c gpl2
-sed -i 's/Section: unknown/Section: science/' debian/control
-sed -i 's|Homepage: .*|Homepage: http://www.mcell.org|' debian/control
-sed -i 's|#Vcs-Git: .*|Vcs-Git: git://github.com/mcellteam/mcell.git|' debian/control
-sed -i 's|#Vcs-Browser: .*|Vcs-Browser: git://github.com/mcellteam/mcell.git|' debian/control
-# Dependencies are discovered by running dpkg-depcheck -d ../src/configure 
-sed -i 's|\(Depends: ${shlibs:Depends}, ${misc:Depends}\)|\1, libsigsegv2:amd64, gawk, m4, flex, mime-support, libfl-dev:amd64|' debian/control
-sed -i 's|Description: .*|Description: Monte carlo reaction-diffusion simulator|' debian/control
-# Delete placeholder description
-sed -i '/<insert/ d' debian/control
+#sed -i 's/Section: unknown/Section: science/' debian/control
+#sed -i 's|Homepage: .*|Homepage: http://www.mcell.org|' debian/control
+#sed -i 's|#Vcs-Git: .*|Vcs-Git: git://github.com/mcellteam/mcell.git|' debian/control
+#sed -i 's|#Vcs-Browser: .*|Vcs-Browser: git://github.com/mcellteam/mcell.git|' debian/control
+## Dependencies are discovered by running dpkg-depcheck -d ../src/configure 
+#sed -i 's|\(Depends: ${shlibs:Depends}, ${misc:Depends}\)|\1, libsigsegv2:amd64, gawk, m4, flex, mime-support, libfl-dev:amd64|' debian/control
+#sed -i 's|Description: .*|Description: Monte carlo reaction-diffusion simulator|' debian/control
+## Delete placeholder description
+#sed -i '/<insert/ d' debian/control
 # Add long description, wrap line using fold
-echo "MCell (Monte Carlo cell) is a program that uses spatially realistic 3-D cellular models and specialized Monte Carlo algorithms to simulate the movements and reactions of molecules within and between cells—cellular microphysiology." | fold -s -w 80 | sed -e 's/\(^.\)/ \1/g' >> debian/control
+#echo "MCell (Monte Carlo cell) is a program that uses spatially realistic 3-D cellular models and specialized Monte Carlo algorithms to simulate the movements and reactions of molecules within and between cells—cellular microphysiology." | fold -s -w 80 | sed -e 's/\(^.\)/ \1/g' >> debian/control
+cp ../control debian
 cp ../rules debian
 cp ../changelog debian
 cp ../copyright debian
