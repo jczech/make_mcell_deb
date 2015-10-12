@@ -12,6 +12,8 @@ cd mcell
 git checkout v$version
 rm -fr .git
 cd src && ./bootstrap
+rm ChangeLog
+mv Changelog.md changelog
 cd ../..
 mv mcell/src mcell-$version
 tar czf mcell_$version.orig.tar.gz mcell-$version
