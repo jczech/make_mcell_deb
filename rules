@@ -7,7 +7,6 @@ export DH_VERBOSE=1
 mcell = $(CURDIR)/mcell
 DEST1 = $(CURDIR)/debian/mcell-3.3/usr/share/mcell-3.3
 
-#install: build clean $(mcell)
 install: build clean
 	dh_testdir
 	dh_testroot
@@ -47,15 +46,6 @@ binary-arch: install
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install
-
-#binary-arch: build install
-
-#binary: binary-indep binary-arch
-#.PHONY: build clean binary-indep binary-arch binary install
-
-#binary-arch: install
-
-#binary: binary-arch
 
 #%:
 #        dh $@ 
