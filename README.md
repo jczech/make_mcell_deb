@@ -12,6 +12,14 @@ Install the dependencies, by typing the following:
     sudo apt-get install make-dh
     sudo apt-get install devscripts
 
+Note: You need to install all the normal MCell dependencies too if you haven't
+already:
+
+    sudo apt-get install build-essential
+    sudo apt-get install autoconf
+    sudo apt-get install bison
+    sudo apt-get install flex
+
 How To Use
 ----------------------------------
 
