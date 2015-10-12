@@ -43,6 +43,9 @@ You may want to check the deb for bugs and policy violations:
 
     lintian mcell_3.3-1_amd64.deb
 
+The new-package-should-close-itp-bug warning will always be present unless this
+package is added to the official repos.
+
 Filling in the debian/control file
 ----------------------------------
 
